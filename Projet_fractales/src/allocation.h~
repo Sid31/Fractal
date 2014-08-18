@@ -1,0 +1,67 @@
+#ifndef ALLOCATION_H
+#define ALLOCATION_H
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+/*! \file            Allocation.h
+ * \author        Noel Stéphanie
+ * \version       1.0
+ * \brief           Biblothèque sur les fonctions d'allocation de la mémoire et de libération de la mémoire.
+ *
+ */
+
+/*! \fn            int my_malloc(void *var, int nb, char type)
+ * \author       Noel Stéphanie
+ * \version      1.0
+ * \date          26 Septembre 2011
+ * \brief          Réécriture de la fonction malloc.
+ * \param        var : Pointeur de n'importe quel type.
+ * \param        nb : Nombre de "case" à allouer.
+ * \param        type : Type de la variable var.
+ * \return        Vrai si il n'y a eu aucun problème d'allocation mémoire.
+ *
+ */
+
+int my_malloc(void *var, int nb, char type);
+
+/*! \fn            int my_malloc2(void *var, int nbL, int nbC, char type)
+ * \author       Noel Stéphanie
+ * \version      1.0
+ * \date          26 Septembre 2011
+ * \brief          Réécriture de la fonction malloc.
+ * \param        var : Pointeur de n'importe quel type.
+ * \param        nbL : Nombre de "case" à allouer pour les lignes.
+ * \param        nbC : Nombre de "case" à allouer pour les colonnes.
+ * \param        type : Type de la variable var.
+ * \return       Vrai si il n'y a eu aucun problème d'allocation mémoire. 
+ *
+ */
+int my_malloc2(void *var, int nbL, int nbC, char type);
+
+/*! \fn            void my_free(void *var)
+ * \author       Noel Stéphanie
+ * \version      1.0
+ * \date          26 Septembre 2011
+ * \brief          Réécriture de la fonction free
+ * \param        var : Pointeur de n'importe quel type.
+ * \return        
+ *
+ */
+
+void my_free(void *var);
+
+/*! \fn             void my_free2(void **var)
+ *  \author       Noel Stéphanie
+ *  \version      1.0
+ *  \date          26 Septembre 2011
+ *  \brief          Réécriture de la fonction free pour un tableau de deux dimensions aloué avec my_alloc2. 
+ *  \param        var : Pointeur sur un tableau de deux dimensions de n'importe quel type.
+ *  \return        
+ *
+ */
+
+void my_free2(void **var);
+
+
+

@@ -1,0 +1,37 @@
+#include "Allocation.h"
+
+int my_malloc(void *var, int nb){
+  var = malloc(nb*sizeof(*var));
+  if(var == NULL){
+    printf("Erreur d'allocation mémoire");
+    exit (EXIT_FAILURE);
+  }
+  return (var != NULL);
+}
+
+//int my_malloc2(void *var, int nbL, int nbC, char type){
+//a écrire
+//}
+
+void* my_free(void *var){
+  if(var != NULL){
+    free(var);
+  }
+    return NULL;
+}
+
+void* my_free2(void **var){
+  int i;
+  for(i=0; i<sizeof(var); i++){
+    var[i] = my_free(var[i]);
+  }
+  var = my_free(var);
+  return NULL;
+}
+
+void my_free_rest(void *var, int t){
+  int i_var;
+  for(i_var = t+1;i<sizeof(var); i++){
+    var[i] = my_free(var[i]);
+  }
+}

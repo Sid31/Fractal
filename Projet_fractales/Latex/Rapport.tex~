@@ -1,0 +1,251 @@
+\documentclass[a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}     
+\usepackage[francais]{babel}  
+\usepackage[top=5cm, bottom=5cm, left=3cm, right=3cm]{geometry}
+\usepackage{graphicx} 
+\usepackage{graphics} 
+\usepackage{float}
+
+\title{Pré-rapport de Projet}
+\author{Stephanie \bsc{Noel} et Sid \bsc{Berraf}}
+\date{\today}
+
+\begin{document}
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+\section{Introduction}
+
+\section{Fractale de Mandelbrot}
+
+\subsection{Définition mathématique}
+   Pour définir mathématiquement la fractale de Mandelbrot on associe à chaque point M du plan complexe, la suite \begin{math}z_{n+1} = z_n^2 + c\end{math} avec  \begin{math}z_0 = 0 \end{math} et \begin{math}c = x + iy \end{math} l'affixe du point M. Tous les points pour lesquels la suite est bornée vont constituer l'ensemble de Mandelbrot. 
+Or la suite diverge lorsque $\| z \| \leq  2$, donc l'ensemble est inclus dans un cercle de rayon 2 et centré à l'origine du plan.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=10cm]{./../doc/Mdb-1.jpg}
+\end{center}
+\end{figure}
+
+\subsection{Informatique}
+En pratique, on prends la grille de pixels de la fenetre. Pour chaque pixels on calcul la valeur de $c$, dont les parties imaginaire et réelle sont données avec les coordonnées du pixel.
+On considère la transformation du plan complexe définie par \begin{math}z \mapsto z^2 + c\end{math} avec le $c$ calculé.
+Soit, partant de \begin{math} z_0 = 0 \end{math} on construit la suite $z_n$ 
+avec \begin{math} z_{n+1} = z_n^2 + c \end{math}.\\
+Calculer $z_{n+1}$ revient à doubler l'argument de $z_n$ et à élever son module au carré puis de rajouter $c$.
+Ainsi, on obtient un nouveau point et on répète les même opérations jusqu'a que l'on trouve un point qui s'envole vers l'infini.\\
+Si la suite des modules de ces nombres complexes ne tend pas vers l'infini, on noircit le point associé à $c$.
+Autrement, on colorie ce point d'une couleur correspondant au nombre de termes qu'on a dû calculer avant d'obtenir un module supérieur ou égal à 2. 
+L'ensemble de Mandelbrot sera la figure formée par les points $c$ tels que la suite $z_n$ ne tend pas l'infini quand $n$ tend vers l'infini.\\
+
+
+\newpage
+\subsection{Valeur de c}
+Il faut tout d'abord se donner les limites dans le plan complexe de l'image et choisir une résolution (nx ny).
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=10cm]{./../doc/Mdb-2.jpg}
+\end{center}
+\end{figure}
+
+Ensuite on définit $c$ par \begin{math} c = a +ib \end{math} avec \begin{math} \left\{ 
+    \begin{array}{ll}
+      a = i \cdot pas + x_{min}\\
+      b = y_{max} - j \cdot pas 
+    \end{array}
+\right. 
+\end{math} 
+\newpage
+\subsection{Calcul de $z_{n+1}$}
+Sachant que \begin{math} z_n \end{math} est un complexe, calculer \begin{math} z_n^2 \end{math} n'est pas facile dans un programme d'ou le cheminement suivant :\\
+
+\begin{center}
+$z_{n+1} = z_n^2 + c$,      on pose \begin{math} \left\{ 
+    \begin{array}{ll}
+      z_n = x_n + iy_n \\
+      c = a + ib  
+    \end{array}\right. 
+\end{math}
+\newline
+
+
+\begin{math}\Rightarrow z_{n+1} = (x_n + iy_n)^2 + a + ib\end{math}\newline
+\begin{math}\Rightarrow z_{n+1} = x_n^2 + 2iy_nx_n - y_n^2 + a + ib \end{math}\newline
+\begin{math}\Rightarrow z_{n+1} = (x_n^2 - y_n^2 + a) + i(2y_nx_n + b)
+\end{math} \newline
+\end{center}
+
+On pose \begin{math} \left\{ 
+    \begin{array}{ll}
+      x_{n + 1} = x_n^2 - y_n^2 + a\\
+      y_{n + 1} = 2y_nx_n + b\\
+    \end{array}
+\right. 
+\end{math} et on obtient $z_{n+1} = x_{n+1} + iy_{n+1}$\\
+\subsection{Organigramme}
+\subsection{Algorithme}
+\subsection{Dessin}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=7cm]{./../doc/fractal1.jpg}
+\end{center}
+\end{figure}
+\newpage
+
+\section{Fractale de Julia}
+
+\subsection{Définition mathématique}
+ La fractale de Julia est basée sur la même suite complexe que celle de Mandelbrot soit la suite \begin{math}z_{n+1} = z_n^2 + c\end{math} sauf que l'on ne fait plus varier $c$ mais $z_0$.
+Donc $c$ devient une constante complexe arbitraire.
+La suite étant la même mathématiquement parlant, elle divergera toujours lorsque $\| z \| \leq  2$.
+Il y a une infinité d'ensembles de Julia puisque l'on peut donner n'importe quelle valeur à la constante $c$.
+
+\subsection{Informatique}
+
+En pratique, on prends la grille de pixels de la fenetre. On choisit un point sur cette grille. Ce point sera la valeur de $c$.
+Pour chaque pixels on calcul la valeur de $z_0$, dont les parties imaginaire et réelle sont données avec les coordonnées du pixel.
+On considère la transformation du plan complexe définie par \begin{math}z \mapsto z^2 + c\end{math}.
+Soit, partant de $z_0$ calculé, on construit la suite $z_n$ avec \begin{math} z_{n+1} = z_n^2 + c \end{math}.\\
+Calculer $z_{n+1}$ revient à doubler l'argument de $z_n$ et à élever son module au carré puis de rajouter $c$.
+Ainsi, on obtient un nouveau point et on répète les même opérations jusqu'a que l'on trouve un point qui s'envole vers l'infini.\\
+Si la suite des modules de ces nombres complexes ne tend pas vers l'infini, on noircit le point associé à $z_0$.
+Autrement, on colorie ce point d'une couleur correspondant au nombre de termes qu'on a dû calculer avant d'obtenir un module supérieur ou égal à 2. 
+L'ensemble de Mandelbrot sera la figure formée par les points $z_0$ tels que la suite $z_n$ ne tend pas l'infini quand $n$ tend vers l'infini.\\
+
+Les calculs de $z_{n+1}$ et $z_0$ sont similaire avec les calculs de $z_{n+1}$ et $c$ de l'emsemble de Mandelbrot.
+
+\subsection{Organigramme}
+\subsection{Algorithme}
+\subsection{Dessin}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=4cm]{./../doc/julia5.jpg}
+\end{center}
+\end{figure}
+\newpage
+
+\section{Fractale IFS}
+\subsection{Définition mathématique}
+Un IFS est un système de fonctions itérées qui lorsqu'on l'applique à un objet géométrique permet d'obtenir une fractale. Ces fonctions sont affines et contractantes. \\
+Le terme contractant signifie que lorsque l'on applique ces fonctions à une figure, les points de celle-ci ne s'éloignent pas mais se rapprochent ; il n'y a donc pas de divergence, on obtient une figure contenue dans un espace fini. \\
+La figure fratale obtenue occupe donc une surface finie, qui n'est autre que la surface de l'objet initial, pour un contour de longueur infinie.\\
+
+\subsubsection{Transformation affine}
+Une transformation affine est définie par un vecteur de translation $V$ et une matrice de transformation $T$. Pour obtenir les coordonnées du point $M'$ image d'un point $M$ par cette transformation, on applique la formule vectorielle :\\
+\begin{center}   
+ $OM ' = T.OM + V$
+\end{center}
+
+Si $(x',y')$ et $(x,y)$représentent les coordonnées de $M'$ et $M$, respectivement, on peut traduire cela par le système d'équations suivant :\\
+\begin{center}
+\begin{math} \left\{ 
+    \begin{array}{ll}
+      x' = ax + by + e\\
+      y' = cx + dy + f
+    \end{array}
+  \right. 
+\end{math} 
+\end{center}
+
+où $a$, $b$, $c$ et $d$ sont les coefficients de la matrice $T$ et $e$ et $f$ les composantes du vecteur $V$.\\\\
+
+\subsubsection{Opérateur d'Hutchinson}
+
+Généralement les IFS sont décrits à l'aide de plusieurs fonctions $f1 ,..., fn$. \\
+Pour une image initiale $A$ donnée, on lui applique chacune de ces fonctions donnant ainsi $n$ images. La nouvelle image $F(A)$ est alors constituée de la réunion de ces $n$ images :\\                         \begin{equation}F(A) = f_1(A)\cup ...\cup f_n(A)\end{equation}         
+F est appelé l'opérateur d'Hutchinson ; c'est l'itération de cet opérateur qui détermine l'IFS. 
+Pour une image initiale $A_0$ on obtient une suite d'images en répétant $F$.
+ \begin{equation}A_{k+1} = F(A_k),   k \in N\end{equation}
+
+Un IFS génère une suite qui tend vers une image finale $A_{\infty}$ que l'on appelle attracteur de l'IFS.      
+
+\subsection{Loi de probabilité pour la génération d'IFS}
+Puisqu'à chaque étape il faut calculer la transformée d’une image par N applications et réaliser l’union des résultats, cela nécessite énormément de calcul. C'est pourquoi il existe une méthode plus rapide.
+
+    Associons à l’IFS défini par $\{w_i\}_{i=1,...,N}$ un jeu de probabilités $\{p_i\}_{i=1,...,N}$. \\
+$p_i$ est la probabilitée pour que la variable aléatoire discrète $k$ prenne la valeur $i$.
+Considérons alors la suite de points de R2 définie par :
+\begin{center}
+\begin{math} \left\{ 
+    \begin{array}{ll}
+      r_0\\
+      r_n = w_{k_n}r_{n-1}
+    \end{array}
+  \right. 
+\end{math} 
+\end{center}
+où $\{k_n\}_{n=1,...,\infty}$ est une suite de variables aléatoires discrètes, indépendantes, identiquement distribuées selon les probabilités $\{p_i \}_{i=1,...,N}$.
+On peut alors montrer que l’ensemble des points $\{r_ n\}$ converge vers l’attracteur de l’IFS.
+
+
+\subsection{Informatique}
+En pratique, on prends la grille de pixels de la fenetre. Pour chaque pixels on associe ses cordonnées au point $(x,y)$.
+Pour un certain nombre d'itérations choisit par l'utilisateur, on lui associe une transformation décidée selon la loi de probabilitée pour obtenir le point suivant $(x_{n+1},y_{n+1})$ à traiter.
+\subsection{Organigramme}
+\subsection{Algorithme}
+
+\subsection{Dessin}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=4cm]{./../doc/ifs.png}
+\end{center}
+\end{figure}
+\newpage
+
+\section{Fractale L-system}
+\subsection{Définition}
+Un L-système est une grammaire formelle, c'est-à-dire un ensemble de symboles et de règles, qui définissent la procédure pour transformer par itération une chaîne de caractères de départ en une autre chaîne. \\
+Les transformations sont basées sur des règles qui spécifient comment des caractères ou parties de la chaîne de caractères sont remplacés par d'autres. Si on applique cet ensemble de règles de façon récursive à une chaîne de caractère, une nouvelle chaîne ayant une structure fractale peut être créée. \\\\
+
+Un L-system est défini par :\\
+\begin{itemize}
+\item Un alphabet 
+\item Un ensemble de symboles constants 
+\item Un axiome
+\item Des règles de reproduction 
+\end{itemize}
+
+\subsection{Informatique}
+\subsubsection{Notre L-system}
+
+\begin{center}
+\begin{tabular}{|c|c|} 
+\hline
+Symbole & Action \\
+\hline
+a & Avancer en traçant\\
+b & Avancer sans tracer\\
++ &  Rotation horaire de cycle\\
+- &  Rotation anti-horaire de cycle\\
+* & rotation de 180 degres\\
+? & Mémorisation de la position actuelle\\
+! & Retour à la dernière position mémorisée\\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Application}
+En pratique on écrira pour chaque symbole une fonction qui effectue l'action qui lui ai associé et qui renvoie le point d'arrivée. 
+Chacune de ses fonctions prendra en paramètre la longueur du tracé, le dernier point tracé, l'angle par rapport au dernier tracé, 
+Le programme principal prendra en paramètre l'axiome de départ sous forme d'une chaine de caractère, parcourera chaque caractère en lui
+
+\subsection{Dessin}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=4cm]{./../doc/1755.png}
+\end{center}
+\end{figure}
+\newpage
+
+\section{Fractale de type flamme}
+\subsection{Dessin}
+
+\section{Conclusion}
+
+\end{document}

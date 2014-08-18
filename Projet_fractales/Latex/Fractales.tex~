@@ -1,0 +1,222 @@
+\documentclass[a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}     
+\usepackage[francais]{babel}  
+\usepackage[top=5cm, bottom=5cm, left=3cm, right=3cm]{geometry}
+\usepackage{graphicx} 
+\usepackage{float}
+
+\title{Les fractales}
+\author{Stephanie \bsc{Noel} et Sid \bsc{Berraf}}
+\date{\today}
+
+\begin{document}
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+\section{Introduction}
+    bla bla bla
+\newpage
+\section{Les fractales en général}
+\subsection{Définition}
+Une figure fractale, est une figure géométrique de structure complexe dont la création ou la forme met en jeu des règles utilisant le fractionnement, c'est à dire en suivant des règles déterministes ou stochastiques.\\\\
+Plus simplement c'est un objet géométrique obtenu par exploration du comportement d'une fonction en chaque point. \\
+Elle désigne des objets dont la structure est invariante par changement d'échelle. \\
+
+\subsection{Caractéristiques}
+\subsubsection{Autosimilarité}
+En géométrie, "similaire" signifie quelque chose de vraiment spécifique. Des figures géométriques sont semblables s'ils ont la même forme sans forcement avoir la même taille.\\
+
+Par exemple :
+\begin{center}
+Ces deux carrés sont similaires.
+\begin{figure}[H]\begin{center}
+\includegraphics[width=4cm]{squares.jpg}
+\end{center}
+\end{figure}
+
+Ces deux rectangles ne sont pas similaires.
+\begin{figure}[H]\begin{center}
+\includegraphics[width=4cm]{rec.jpg}
+\end{center}
+\end{figure}
+
+Mais c'est deux rectangles le sont.
+\begin{figure}[H]\begin{center}
+\includegraphics[width=4cm]{srec.jpg}
+\end{center}
+\end{figure}
+\end{center}
+
+On parle de figures autosimilaires lorsque l'ensemble de plusieurs figures identiques forment cette même figure en plus grand.
+Un objet autosimilaire est exactement ou partiellement similaire à une part de lui même.
+
+Quelques exemples de figures autosimilaires :
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=8cm]{figures.jpg}
+\end{center}
+\end{figure}
+
+\subsubsection{Dimension non entière}
+
+On sait que qu'un point est une figure de dimension 0 ; qu'une ligne droite est un objet de dimension 1 ; qu'une surface plane est un objet de dimension 2 ; qu'un volume est de dimension 3...
+
+Soit si on prend un segment, un carré et un cube et que l'on double leurs tailles, on obtient :
+
+\begin{center}
+Pour le segment deux copies du segment original.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=4cm]{diseg.jpg}
+\end{center}
+\end{figure}
+Pour le carré quatre copies.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=2cm]{disq.jpg}
+\end{center}
+\end{figure}
+Et pour le cube huit copies.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=2cm]{dicu.jpg}
+\end{center}
+\end{figure}
+\end{center}
+
+Il apparait donc que lorsque l'on double la taille des figures on obtient un nombre de copies égal à \begin{math} 2^{d} \end{math} avec d la dimension de la figure. \\
+\begin{center}
+\begin{tabular}{|c|c|c|} 
+\hline
+Figure & Dimension & Nb de copies \\
+\hline
+Segment & 1 & \begin{math} 2 = 2^1 \end{math} \\
+Carré & 2 & \begin{math} 4 = 2^2 \end{math}\\
+Cube & 3 &  \begin{math} 8 = 2^3 \end{math}\\
+Figure & d & \begin{math} 2^{d} \end{math}\\
+\hline
+\end{tabular}
+\end{center}
+Maintenant, prenons un objet fractal comme le triangle de Sierpinski et doublons sa taille :
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=7cm]{tri.jpg}
+\end{center}
+\end{figure}
+
+On obtient trois copies (celui du milieu étant vide on ne le compte pas), donc on a \begin{math} 3 = 2^{d} \end{math} soit d entre 1,5 et 1,6.\\
+
+Les fractales ont donc des dimensions non entières.
+
+\subsubsection{Formation par itération}
+\newpage
+\section{Fractale de Mandelbrot}
+\subsection{Définition mathématique}
+   Pour définir mathématiquement la fractale de Mandelbrot on associe à chaque point M du plan complexe, la suite \begin{math}z_{n+1} = z_n^2 + c\end{math} avec  \begin{math}z_0 = 0 \end{math} et \begin{math}c = x + iy \end{math} l'affixe du point M. Tous les points pour lesquels la suite est bornée vont constituer l'ensemble de Mandelbrot. 
+Or la suite diverge lorsque /le module de z est supérieur à 2/, donc l'ensemble est inclus dans un cercle de rayon 2 et centré à l'origine du plan.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=10cm]{./../doc/Mdb-1.jpg}
+\end{center}
+\end{figure}
+
+\subsection{Informatique}
+En pratique, pour chaque nombre complexe $c$ dont les parties imaginaire et réelle sont données avec les coordonnées de chaque pixels, on considère la transformation du plan complexe définie par \begin{math}z \mapsto z^2 + c\end{math}.
+Soit, partant de \begin{math} z_0 = 0 \end{math} on construit la suite $z_n$ 
+avec \begin{math} z_{n+1} = z_n^2 + c \end{math}.\\
+Calculer $z_{n+1}$ revient à doubler l'argument de $z_n$ et à élever son module au carré puis de rajouter $c$.
+Ainsi, on obtient un nouveau point et on répète les même opérations jusqu'a que l'on trouve un point qui s'envole vers l'infini.\\
+L'ensemble de Mandelbrot sera la figure formée par les points $c$ tels que la suite $z_n$ ne tend pas l'infini quand $n$ tend vers l'infini.\\
+
+\subsection{Algorigramme}
+\newpage
+\subsection{Valeur de c}
+Il faut tout d'abord se donner les limites dans le plan complexe de l'image et choisir une résolution (nx ny).
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=10cm]{./../doc/Mdb-2.jpg}
+\end{center}
+\end{figure}
+
+Ensuite on définit $c$ par \begin{math} c = a +ib \end{math} avec \begin{math} \left\{ 
+    \begin{array}{ll}
+      a = i \cdot pas + x_{min}\\
+      b = y_{max} - j \cdot pas 
+    \end{array}
+\right. 
+\end{math} 
+\newpage
+\subsection{Calcul de $z_{n+1}$}
+Sachant que \begin{math} z_n \end{math} est un complexe, calculer \begin{math} z_n^2 \end{math} n'est pas facile dans un programme d'ou le cheminement suivant :\\
+
+\begin{center}
+$z_{n+1} = z_n^2 + c$,      on pose \begin{math} \left\{ 
+    \begin{array}{ll}
+      z_n = x_n + iy_n \\
+      c = a + ib  
+    \end{array}\right. 
+\end{math}
+\newline
+
+
+\begin{math}\Rightarrow z_{n+1} = (x_n + iy_n)^2 + a + ib\end{math}\newline
+\begin{math}\Rightarrow z_{n+1} = x_n^2 + 2iy_nx_n - y_n^2 + a + ib \end{math}\newline
+\begin{math}\Rightarrow z_{n+1} = (x_n^2 - y_n^2 + a) + i(2y_nx_n + b)
+\end{math} \newline
+\end{center}
+
+On pose \begin{math} \left\{ 
+    \begin{array}{ll}
+      x_{n + 1} = x_n^2 - y_n^2 + a\\
+      y_{n + 1} = 2y_nx_n + b\\
+    \end{array}
+\right. 
+\end{math} et on obtient $z_{n+1} = x_{n+1} + iy_{n+1}$\\
+
+\subsection{Dessin}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=7cm]{./../doc/fractal1.jpg}
+\end{center}
+\end{figure}
+\newpage
+
+\section{Fractale de Julia}
+\subsection{Dessin}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=4cm]{./../doc/julia5.jpg}
+\end{center}
+\end{figure}
+\newpage
+
+\section{Fractale IFS}
+\subsection{Dessin}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=4cm]{./../doc/ifs.png}
+\end{center}
+\end{figure}
+\newpage
+
+\section{Fractale L-system}
+\subsection{Dessin}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=4cm]{./../doc/1755.png}
+\end{center}
+\end{figure}
+\newpage
+
+\section{Fractale de type flamme}
+\subsection{Dessin}
+
+\end{document}

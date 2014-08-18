@@ -1,0 +1,9 @@
+\select@language {french}
+\contentsline {section}{\numberline {1}Introduction}{3}
+\contentsline {section}{\numberline {2}Les fractales en g\IeC {\'e}n\IeC {\'e}ral}{5}
+\contentsline {subsection}{\numberline {2.1}D\IeC {\'e}finition}{5}
+\contentsline {subsection}{\numberline {2.2}Caract\IeC {\'e}ristiques}{5}
+\contentsline {subsubsection}{\numberline {2.2.1}Autosimilarit\IeC {\'e}}{5}
+\contentsline {subsubsection}{\numberline {2.2.2}Dimension non enti\IeC {\`e}re}{6}
+\contentsline {subsubsection}{\numberline {2.2.3}Formation par it\IeC {\'e}ration}{7}
+\contentsline {section}{\numberline {3}Conclusion}{9}

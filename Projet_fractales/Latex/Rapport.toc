@@ -1,0 +1,34 @@
+\select@language {french}
+\contentsline {section}{\numberline {1}Introduction}{3}
+\contentsline {section}{\numberline {2}Fractale de Mandelbrot}{3}
+\contentsline {subsection}{\numberline {2.1}D\IeC {\'e}finition math\IeC {\'e}matique}{3}
+\contentsline {subsection}{\numberline {2.2}Informatique}{3}
+\contentsline {subsection}{\numberline {2.3}Valeur de c}{4}
+\contentsline {subsection}{\numberline {2.4}Calcul de $z_{n+1}$}{5}
+\contentsline {subsection}{\numberline {2.5}Organigramme}{5}
+\contentsline {subsection}{\numberline {2.6}Algorithme}{5}
+\contentsline {subsection}{\numberline {2.7}Dessin}{5}
+\contentsline {section}{\numberline {3}Fractale de Julia}{6}
+\contentsline {subsection}{\numberline {3.1}D\IeC {\'e}finition math\IeC {\'e}matique}{6}
+\contentsline {subsection}{\numberline {3.2}Informatique}{6}
+\contentsline {subsection}{\numberline {3.3}Organigramme}{6}
+\contentsline {subsection}{\numberline {3.4}Algorithme}{6}
+\contentsline {subsection}{\numberline {3.5}Dessin}{6}
+\contentsline {section}{\numberline {4}Fractale IFS}{7}
+\contentsline {subsection}{\numberline {4.1}D\IeC {\'e}finition math\IeC {\'e}matique}{7}
+\contentsline {subsubsection}{\numberline {4.1.1}Transformation affine}{7}
+\contentsline {subsubsection}{\numberline {4.1.2}Op\IeC {\'e}rateur d'Hutchinson}{7}
+\contentsline {subsection}{\numberline {4.2}Loi de probabilit\IeC {\'e} pour la g\IeC {\'e}n\IeC {\'e}ration d'IFS}{8}
+\contentsline {subsection}{\numberline {4.3}Informatique}{8}
+\contentsline {subsection}{\numberline {4.4}Organigramme}{8}
+\contentsline {subsection}{\numberline {4.5}Algorithme}{8}
+\contentsline {subsection}{\numberline {4.6}Dessin}{8}
+\contentsline {section}{\numberline {5}Fractale L-system}{9}
+\contentsline {subsection}{\numberline {5.1}D\IeC {\'e}finition}{9}
+\contentsline {subsection}{\numberline {5.2}Informatique}{9}
+\contentsline {subsubsection}{\numberline {5.2.1}Notre L-system}{9}
+\contentsline {subsection}{\numberline {5.3}Application}{9}
+\contentsline {subsection}{\numberline {5.4}Dessin}{10}
+\contentsline {section}{\numberline {6}Fractale de type flamme}{11}
+\contentsline {subsection}{\numberline {6.1}Dessin}{11}
+\contentsline {section}{\numberline {7}Conclusion}{11}

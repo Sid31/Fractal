@@ -1,0 +1,24 @@
+#include "recup.h"
+
+void tableau_commande(char** tableau, int taille){
+
+  //initialisation variables
+  int i_tab;
+  int i_rest_tab;
+  int i_new_tab;
+
+  i_new_tab = 0;
+
+  for(i_tab=1; i_tab<taille; i_tab++){ //On enleve tableau[0] qui correspond au nom de l'éxécutable
+    if(strcmp(tableau[i_tab],"")){ //Si ce n'est pas une occurence 
+      for(i_rest_tab = i_tab; i_rest_tab<taille;i_rest_tab++){ //on parcours le reste du tableau
+	if(tableau[i_rest_tab] == tableau[i_tab]){ //Si on tombe sur une occurence
+	  strcpy(tableau[i_rest_tab],""); //On l'enlève
+	}
+      }
+      strcpy(tableau[i_new_tab],tableau[i_tab]); //On rajoute la valeur dans le nouveau tableau
+    }
+  }  
+  my_free_rest(tableau,i_new_tab); //on désalloue les cases inutiles.
+}
+	
